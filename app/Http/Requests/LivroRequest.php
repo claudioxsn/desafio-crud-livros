@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class LivroRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class LivroRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,5 +34,13 @@ class LivroRequest extends FormRequest
             'assunto_ids' => ['required', 'array', 'min:1'],
             'assunto_ids.*' => ['exists:assuntos,id'],
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success' => false,
+            'error' => $validator->errors()
+        ]));
     }
 }
