@@ -74,4 +74,9 @@ class LivroService
     {
         return $this->livroRepository->relatorioAgrupadoPorAutor();
     }
+
+    public function restore($id)
+    {
+        return $this->livroRepository->restore($id);
+    }
 }
