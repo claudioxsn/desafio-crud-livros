@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AssuntoRequest;
 use App\Services\AssuntoService;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class AssuntoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AssuntoRequest $request)
     {
         $assunto = $this->assuntoService->criar($request->all());
 
@@ -52,7 +53,7 @@ class AssuntoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AssuntoRequest $request, string $id)
     {
 
         $assunto = $this->assuntoService->atualizar($id, $request->all());
@@ -67,5 +68,11 @@ class AssuntoController extends Controller
     {
         $this->assuntoService->deletar($id);
         return response()->json(['mensagem' => 'assunto deletado com sucesso']);
+    }
+
+    public function restore($id)
+    {
+        $this->assuntoService->restore($id);
+        return response()->json(['mensagem' => 'assunto restaurado com sucesso']);
     }
 }

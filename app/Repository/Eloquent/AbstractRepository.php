@@ -49,4 +49,20 @@ abstract class AbstractRepository implements RepositoryInterface
         $record = $this->find($id);
         return $record->delete();
     }
+    
+       public function restore($id)
+    {
+        $item = $this->model->withTrashed()->findOrFail($id);
+        return $item->restore();
+    }
+
+    public function onlyTrashed()
+    {
+        return $this->model->onlyTrashed()->get();
+    }
+
+    public function withTrashed()
+    {
+        return $this->model->withTrashed()->get();
+    }
 }

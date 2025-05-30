@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AutorRequest;
 use App\Services\AutorService;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class AutorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AutorRequest $request)
     {
         $autor = $this->autorService->criar($request->all());
 
@@ -52,7 +53,7 @@ class AutorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AutorRequest $request, string $id)
     {
         $autor = $this->autorService->atualizar($id, $request->all());
 
@@ -66,5 +67,11 @@ class AutorController extends Controller
     {
         $this->autorService->deletar($id);
         return response()->json(['mensagem' => 'autor deletado com sucesso']);
+    }
+
+    public function restore($id)
+    {
+        $this->autorService->restore($id);
+        return response()->json(['mensagem' => 'autor restaurado com sucesso']);
     }
 }

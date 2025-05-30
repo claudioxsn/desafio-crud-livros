@@ -46,4 +46,9 @@ class AutorService
     {
         return $this->autorRepository->delete($id);
     }
+
+    public function restore($id)
+    {
+        return $this->autorRepository->restore($id);
+    }
 }

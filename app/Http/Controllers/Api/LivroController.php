@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LivroRequest;
 use App\Services\LivroService;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class LivroController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LivroRequest $request)
     {
         $livro = $this->livroService->criar($request->all());
 
@@ -51,7 +52,7 @@ class LivroController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(LivroRequest $request, string $id)
     {
         $livro = $this->livroService->atualizar($id, $request->all());
 
@@ -65,5 +66,11 @@ class LivroController extends Controller
     {
         $this->livroService->deletar($id);
         return response()->json(['mensagem' => 'livro deletado com sucesso']);
+    }
+
+    public function restore($id)
+    {
+        $this->livroService->restore($id);
+        return response()->json(['mensagem' => 'livro restaurado com sucesso']);
     }
 }

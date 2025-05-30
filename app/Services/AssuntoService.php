@@ -50,4 +50,9 @@ class AssuntoService
     {
         return $this->assuntoRepository->delete($id);
     }
+
+    public function restore($id)
+    {
+        return $this->assuntoRepository->restore($id);
+    }
 }
