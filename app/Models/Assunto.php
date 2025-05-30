@@ -8,12 +8,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Assunto extends Model
 {
 
-    use SoftDeletes; 
+    use SoftDeletes;
 
-    protected $fillable = ['descricao'];
+    protected $table = 'Assunto';
+    protected $primaryKey = 'codAs';
+    public $incrementing = true;
+    protected $keyType = 'integer';
+
+    protected $fillable = [
+        'Descricao',
+    ];
 
     public function livros()
     {
-        return $this->belongsToMany(Livro::class, 'livro_assunto');
+        return $this->belongsToMany(
+            Livro::class,
+            'livro_assunto',
+            'Assunto_codAs',
+            'Livro_Codl'
+        );
     }
 }

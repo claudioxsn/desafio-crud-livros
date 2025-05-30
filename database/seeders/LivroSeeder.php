@@ -41,16 +41,16 @@ class LivroSeeder extends Seeder
         $editoras = ['Novatec', 'Atlas', 'Pearson', 'Campus', 'Alta Books'];
         $anos = range(2000, 2024);
 
-        $autores = Autor::pluck('id')->toArray();
-        $assuntos = Assunto::pluck('id')->toArray();
+        $autores = Autor::pluck('CodAu')->toArray();
+        $assuntos = Assunto::pluck('CodAs')->toArray();
 
         foreach ($titulos as $titulo) {
             $livro = Livro::create([
-                'titulo' => $titulo,
-                'editora' => fake()->randomElement($editoras),
-                'edicao' => fake()->numberBetween(1, 10),
-                'ano_publicacao' => fake()->randomElement($anos),
-                'valor' => fake()->randomFloat(2, 30, 150),
+                'Titulo' => $titulo,
+                'Editora' => fake()->randomElement($editoras),
+                'Edicao' => fake()->numberBetween(1, 10),
+                'AnoPublicacao' => fake()->randomElement($anos),
+                'Valor' => fake()->randomFloat(2, 30, 150),
             ]);
 
             $autorIds = fake()->randomElements($autores, rand(2, 4));

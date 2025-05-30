@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assuntos', function (Blueprint $table) {
-            $table->id();
-            $table->string('descricao', 20)->nullable(false);
+        Schema::create('Assunto', function (Blueprint $table) {
+            $table->id('codAs');
+            $table->string('Descricao', 20)->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });

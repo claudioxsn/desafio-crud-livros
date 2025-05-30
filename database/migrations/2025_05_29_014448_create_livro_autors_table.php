@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('livro_autor', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('livro_id')->constrained('livros')->onDelete('cascade');
-            $table->foreignId('autor_id')->constrained('autors')->onDelete('cascade');
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::create('Livro_Autor', function (Blueprint $table) {
+            $table->bigInteger('Autor_CodAu')->unsigned()->nullable(false);
+            $table->bigInteger('Livro_Codl')->unsigned()->nullable(false);
+            $table->foreign('Livro_Codl')->references('Codl')->on('Livro')->onDelete('cascade');
+            $table->foreign('Autor_CodAu')->references('CodAu')->on('Autor')->onDelete('cascade');
+            $table->primary(['Livro_Codl', 'Autor_CodAu']);
         });
     }
 

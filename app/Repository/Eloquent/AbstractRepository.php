@@ -14,7 +14,7 @@ abstract class AbstractRepository implements RepositoryInterface
         $this->model = $this->resolveModel();
     }
 
-    abstract protected function model(); 
+    abstract protected function model();
 
     protected function resolveModel()
     {
@@ -49,8 +49,8 @@ abstract class AbstractRepository implements RepositoryInterface
         $record = $this->find($id);
         return $record->delete();
     }
-    
-       public function restore($id)
+
+    public function restore($id)
     {
         $item = $this->model->withTrashed()->findOrFail($id);
         return $item->restore();

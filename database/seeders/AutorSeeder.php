@@ -27,7 +27,7 @@ class AutorSeeder extends Seeder
         ];
 
         foreach ($nomes as $nome) {
-            Autor::create(['nome' => $nome]);
+            Autor::create(['Nome' => $nome]);
         }
     }
 }

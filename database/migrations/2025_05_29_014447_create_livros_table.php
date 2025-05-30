@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('livros', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo', 40);
-            $table->string('editora', 40)->nullable(false);
-            $table->integer('edicao')->nullable(false);
-            $table->string('ano_publicacao', 4)->nullable(false);
-            $table->decimal('valor', 10, 2)->nullable(false);
+        Schema::create('Livro', function (Blueprint $table) {
+            $table->id('Codl');
+            $table->string('Titulo', 40);
+            $table->string('Editora', 40)->nullable(false);
+            $table->integer('Edicao')->nullable(false);
+            $table->string('AnoPublicacao', 4)->nullable(false);
+            $table->decimal('Valor', 10, 2)->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });

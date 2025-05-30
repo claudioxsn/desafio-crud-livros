@@ -24,15 +24,15 @@ class LivroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titulo' => ['required', 'string', 'max:255'],
-            'editora' => ['required', 'string', 'max:255'],
-            'edicao' => ['required', 'integer', 'min:1'],
-            'ano_publicacao' => ['required', 'integer', 'between:1900,' . now()->year],
-            'valor' => ['required', 'numeric', 'min:0'],
-            'autor_ids' => ['required', 'array', 'min:1'],
-            'autor_ids.*' => ['exists:autores,id'],
-            'assunto_ids' => ['required', 'array', 'min:1'],
-            'assunto_ids.*' => ['exists:assuntos,id'],
+            'Titulo' => ['required', 'string', 'max:255'],
+            'Editora' => ['required', 'string', 'max:255'],
+            'Edicao' => ['required', 'integer', 'min:1'],
+            'AnoPublicacao' => ['required', 'integer', 'between:1900,' . now()->year],
+            'Valor' => ['required', 'numeric', 'min:0'],
+            'Livro_CodAu' => ['required', 'array', 'min:1'],
+            'Livro_CodAu.*' => ['exists:Autor,CodAu'],
+            'Livro_CodAs' => ['required', 'array', 'min:1'],
+            'Livro_CodAs.*' => ['exists:Assunto,CodAs'],
         ];
     }
 

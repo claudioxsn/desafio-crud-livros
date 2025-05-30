@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('autors', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome', 40)->nullable(false);
+        Schema::create('Autor', function (Blueprint $table) {
+            $table->id('CodAu');
+            $table->string('Nome', 40)->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });
