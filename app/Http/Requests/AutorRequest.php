@@ -24,7 +24,7 @@ class AutorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => ['required', 'string', 'max:255']
+            'Nome' => ['required', 'string', 'max:255']
         ];
     }
 

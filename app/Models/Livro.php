@@ -10,21 +10,46 @@ class Livro extends Model
 
     use SoftDeletes;
 
-  protected $fillable = [
-        'titulo',
-        'editora',
-        'edicao',
-        'ano_publicacao',
-        'valor',
+    protected $table = 'Livro';
+    protected $primaryKey = 'Codl';
+    public $incrementing = true;
+    protected $keyType = 'integer';
+
+    protected $fillable = [
+        'Titulo',
+        'Editora',
+        'Edicao',
+        'AnoPublicacao',
+        'Valor',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'Edicao' => 'integer',
+        'Valor' => 'decimal:2',
     ];
 
     public function autores()
     {
-        return $this->belongsToMany(Autor::class, 'livro_autor');
+        return $this->belongsToMany(
+            Autor::class,
+            'Livro_Autor',
+            'Livro_Codl',
+            'Autor_CodAu'
+        );
     }
 
     public function assuntos()
     {
-        return $this->belongsToMany(Assunto::class, 'livro_assunto');
+        return $this->belongsToMany(
+            Assunto::class,
+            'Livro_Assunto',
+            'Livro_Codl',
+            'Assunto_codAs'
+        );
     }
 }

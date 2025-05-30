@@ -27,7 +27,7 @@ class AssuntoSeeder extends Seeder
         ];
 
         foreach ($assuntos as $descricao) {
-            Assunto::create(['descricao' => $descricao]);
+            Assunto::create(['Descricao' => $descricao]);
         }
     }
 }
